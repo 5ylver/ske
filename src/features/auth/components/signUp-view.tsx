@@ -15,10 +15,12 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 
-export default function SignInViewPage() {
+export default function SignUpViewPage() {
   const [isLoading, setIsLoading] = useState(false);
-  const [username, setUsername] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -32,60 +34,77 @@ export default function SignInViewPage() {
     <Card className="w-full bg-white">
       <CardHeader className="space-y-1">
         <CardTitle className="text-2xl font-semibold tracking-tight">
-          Sign in
+          Create account
         </CardTitle>
         <CardDescription>
-          Sign in with your email and password to get started
+          Enter your information below to create your account
         </CardDescription>
       </CardHeader>
-      <CardContent className=" text-slate-800">
+      <CardContent className="space-y-4">
         <form onSubmit={handleSubmit} className="space-y-4">
           <Input
-            label="Username"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            label="Fullname"
+            id="fullname"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
             required
             error={error}
           />
+
           <Input
-            label="Password"
+            label="Email"
+            id="username"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            error={error}
+          />
+
+          <Input
             id="password"
+            label="Password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            error={error}
           />
 
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <Checkbox id="remember" />
-              <Label htmlFor="remember" className="text-sm font-normal">
-                Remember me
-              </Label>
-            </div>
-            <Button variant="link" className="px-0 text-sm">
-              Forgot password?
-            </Button>
+          <Input
+            id="password-confirm"
+            label="Confirm password"
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+
+          <div className="flex items-center space-x-2 text-slate-800">
+            <Checkbox id="terms" required />
+            <Label htmlFor="terms" className="text-sm font-normal">
+              I agree to the{" "}
+              <Button variant="link" className="px-0 text-sm h-auto">
+                Terms of Service
+              </Button>{" "}
+              and{" "}
+              <Button variant="link" className="px-0 text-sm h-auto">
+                Privacy Policy
+              </Button>
+            </Label>
           </div>
 
           <Button type="submit" className="w-full" disabled={isLoading}>
-            {isLoading ? "Signing in..." : "Sign in"}
+            {isLoading ? "Creating account..." : "Create account"}
           </Button>
         </form>
       </CardContent>
 
       <CardFooter className="flex justify-center text-slate-600">
         <p className="text-sm text-muted-foreground">
-          {"Don't have an account? "}
-          <Link href={"/auth/sign-up"}>
-            <Button
-              variant="link"
-              size="icon"
-              className="ml-2 px-0 text-sm font-semibold"
-            >
-              Sign up
+          Already have an account?{" "}
+          <Link href={"/auth/sign-in"}>
+            <Button variant="link" className="px-0 text-sm">
+              Sign in
             </Button>
           </Link>
         </p>

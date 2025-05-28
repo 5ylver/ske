@@ -22,7 +22,6 @@ const Input: React.FC<InputProps> = ({
   error,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
-
   const hasValue = value && value.length > 0;
 
   return (
@@ -39,25 +38,24 @@ const Input: React.FC<InputProps> = ({
         onBlur={() => setIsFocused(false)}
         className={`
           block w-full appearance-none bg-transparent 
-          border-b-2 px-0 pt-6 pb-1 text-base text-gray-900 
+          border-2 rounded-md px-3 pt-2.5 pb-2.5 text-base text-gray-900
           focus:outline-none focus:ring-0 transition-all duration-200
           ${
             error
               ? "border-red-500 focus:border-red-500"
-              : "border-gray-300 focus:border-blue-600"
+              : "border-gray-300 focus:border-primary"
           }
-          dark:border-gray-600 dark:focus:border-blue-500
         `}
       />
       <label
         htmlFor={id}
         className={`
-          absolute left-0 top-1 text-sm text-gray-500 dark:text-gray-400
-          transition-all duration-200 pointer-events-none
+          absolute left-3 transition-all duration-200 pointer-events-none 
+          bg-white px-1 z-10
           ${
             isFocused || hasValue
-              ? "-translate-y-0 scale-75 text-blue-600 dark:text-blue-400"
-              : "translate-y-5"
+              ? "text-xs -top-2 text-primary"
+              : "text-base top-3 text-gray-500"
           }
           ${error ? "!text-red-500" : ""}
         `}

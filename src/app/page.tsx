@@ -1,10 +1,5 @@
-import Navigation from "@/components/Header/header";
+import { redirect } from "next/navigation";
 
 export default function Page() {
-  return (
-    <>
-      <Navigation />
-      <div className="min-h-screen justify-center bg-gray-50"></div>
-    </>
-  );
+  redirect("/auth/sign-in");
 }

@@ -33,7 +33,7 @@ export default function SignUpViewPage() {
   return (
     <Card className="w-full bg-white">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl font-semibold tracking-tight">
+        <CardTitle className="text-2xl font-semibold tracking-tight text-primary">
           Create account
         </CardTitle>
         <CardDescription>
@@ -93,7 +93,11 @@ export default function SignUpViewPage() {
             </Label>
           </div>
 
-          <Button type="submit" className="w-full" disabled={isLoading}>
+          <Button
+            type="submit"
+            className="w-full text-slate-900 font-bold"
+            disabled={isLoading}
+          >
             {isLoading ? "Creating account..." : "Create account"}
           </Button>
         </form>
@@ -103,7 +107,7 @@ export default function SignUpViewPage() {
         <p className="text-sm text-muted-foreground">
           Already have an account?{" "}
           <Link href={"/auth/sign-in"}>
-            <Button variant="link" className="px-0 text-sm">
+            <Button variant="link" className="px-0 text-sm font-semibold">
               Sign in
             </Button>
           </Link>

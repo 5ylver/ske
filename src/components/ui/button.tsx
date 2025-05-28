@@ -7,11 +7,11 @@ type Variant = "default" | "link";
 type Size = "default" | "sm" | "lg" | "icon";
 
 const baseClasses =
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50";
+  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer";
 
 const variantClasses: Record<Variant, string> = {
-  default: "bg-slate-500 text-white hover:bg-slate-600",
-  link: "text-slate-500 underline-offset-4 hover:underline",
+  default: "bg-yellow-500 text-white hover:bg-yellow-600",
+  link: "text-primary underline-offset-4 hover:underline",
 };
 
 const sizeClasses: Record<Size, string> = {

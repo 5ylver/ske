@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 import Input from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -17,7 +18,7 @@ import { Label } from "@/components/ui/label";
 
 export default function SignInViewPage() {
   const [isLoading, setIsLoading] = useState(false);
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
@@ -26,12 +27,13 @@ export default function SignInViewPage() {
     setIsLoading(true);
     await new Promise((resolve) => setTimeout(resolve, 1000));
     setIsLoading(false);
+    redirect("/dashboard");
   };
 
   return (
     <Card className="w-full bg-white">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl font-semibold tracking-tight">
+        <CardTitle className="text-2xl font-semibold tracking-tight text-primary">
           Sign in
         </CardTitle>
         <CardDescription>
@@ -41,15 +43,15 @@ export default function SignInViewPage() {
       <CardContent className=" text-slate-800">
         <form onSubmit={handleSubmit} className="space-y-4">
           <Input
-            label="Username"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            label="Email*"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
             error={error}
           />
           <Input
-            label="Password"
+            label="Password*"
             id="password"
             type="password"
             value={password}
@@ -70,7 +72,11 @@ export default function SignInViewPage() {
             </Button>
           </div>
 
-          <Button type="submit" className="w-full" disabled={isLoading}>
+          <Button
+            type="submit"
+            className="w-full text-slate-900 font-bold"
+            disabled={isLoading}
+          >
             {isLoading ? "Signing in..." : "Sign in"}
           </Button>
         </form>
